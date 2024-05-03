@@ -1,0 +1,14 @@
+sequenceDiagram
+participant Browser
+participant Server
+
+note over Browser: notes_form onSubmit event <br/> JS catches submit data
+note over Browser: [note {"content":"a note????",<br/>"date":"2024-05-03T19:54:17.304Z"}]
+Browser ->> Browser: Appends and redraws new note to page
+note over Browser: POST the new note object to server
+Browser ->> Server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+Server -->> Browser: STATUS 201 : {{"message":"note created"}}
+
+
+
+

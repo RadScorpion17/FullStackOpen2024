@@ -1,0 +1,22 @@
+sequenceDiagram
+participant Browser
+participant Server
+
+note over Browser: Initial page load
+Browser ->> Server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+Server -->> Browser: /spa HTML
+Browser ->> Server: GET https://studies.cs.helsinki.fi/exampleapp/main.cs
+Server -->> Browser: main.cs
+Browser ->> Server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+Server -->> Browser: spa.js
+Browser ->> Server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+note over Server,Browser : Server returns initial JSON object
+Server -->> Browser: JSON [{"content":"Okey Dokey","date":"2024-05-03T14:10:32.569Z"}...]}
+note over Browser: Submit event on notes_form
+Browser ->> Browser: Append new element and redraws notes list
+note over Browser: Post the new note to the server
+Browser ->> Server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+Server --> Browser: STATUS 201 {{"message" : "note created"}}
+
+
+
